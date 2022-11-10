@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un stagiaire{% endblock %}
+
+{% block body %}
+
+    {% if edit %}
+        <h1>Editer un stagiaire</h1>
+    {% else %}
+        <h1>Ajouter un stagiaire</h1>
+    {% endif %}
+
+    {{ form(formAddStagiaire) }}
+
+{% endblock %}

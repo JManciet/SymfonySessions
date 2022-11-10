@@ -5,9 +5,13 @@
 {% block body %}
     <h1>Liste des stagiaires</h1>
 
+    <a class="btn btn-primary" href="{{ path('add_stagiaire') }}">Ajouter un stagiaire</a> <br>
+
 
     {% for stagiaire in stagiaires %}
-        {{stagiaire}}
+        <a href="{{ path('show_stagiaire', {'id': stagiaire.id }) }}">{{stagiaire}}</a> 
+        <a class="btn btn-warning" href="{{ path('edit_stagiaire', {'id': stagiaire.id }) }}">Edit</a>
+        <a class="btn btn-danger" href="{{ path('delete_stagiaire', {'id': stagiaire.id }) }}">Delete</a>
         <br>
     {% endfor %}
 {% endblock %}
