@@ -73,7 +73,8 @@ class SessionRepository extends ServiceEntityRepository
         $qb->select('m')
             ->from('App\Entity\Module', 'm')
             ->leftJoin('m.programmes', 'p')
-            ->where('p.id = :id');
+            ->leftJoin('p.session', 'se')
+            ->where('se.id = :id');
 
         $sub = $em->createQueryBuilder();
         $sub->select('mo')

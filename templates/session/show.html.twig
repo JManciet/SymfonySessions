@@ -91,8 +91,8 @@
                         {% for programme in session.programmes %}
                         <tr>
                             <td>{{ programme.module }}</td>
-                            <td>{{programme.module.categorie}}</td>
-                            <td>{{programme.nbJour}}</td>
+                            <td>{{ programme.module.categorie }}</td>
+                            <td>{{ programme.nbJour }}</td>
                             <td>Déprogrammer</td>
                         </tr>
                         {% endfor %}
@@ -119,8 +119,11 @@
                     <tr>
                         <td>{{ module }}</td>
                         <td>{{ module.categorie }}</td>
-                        <td></td>
-                        <td>programmer</td>
+                        <form method="POST" action="{{ path('program_module', {'idSe': session.id,'idMo': module.id }) }}">
+                            <td><input type="number" id="jours" name="jours" /></td>
+                            <td><input type="submit" name="submit" value="Programmer" /></td>
+                        </form>
+
                     </tr>
                     {% endfor %}
                 </tbody>

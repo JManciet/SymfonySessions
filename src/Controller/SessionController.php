@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Module;
 use App\Entity\Session;
+use App\Entity\Programme;
 use App\Entity\Stagiaire;
 use App\Repository\SessionRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -69,6 +71,26 @@ class SessionController extends AbstractController
 
         $em = $doctrine->getManager();
         $session->removeStagiaire($stagiaire);
+        $em->persist($session);
+        $em->flush();
+
+        return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+    }
+
+    /**
+     * @Route("/session/program/{idSe}/{idMo}", name="program_module")
+     * @ParamConverter("session", options={"mapping": {"idSe": "id"}})
+     * @ParamConverter("module", options={"mapping": {"idMo": "id"}})
+     */
+    public function programModule(ManagerRegistry $doctrine, Session $session, Module $module)
+    {
+
+        $programme = new Programme();
+
+        $em = $doctrine->getManager();
+        $programme->setNbJour($_POST['jours'])->setModule($module);
+        $em->persist($programme);
+        $session->addProgramme($programme);
         $em->persist($session);
         $em->flush();
 
