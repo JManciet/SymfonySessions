@@ -31,10 +31,12 @@ class SessionController extends AbstractController
     {
 
         $nonInscrits = $sr->findNonInscrits($session->getId());
+        $nonProgrammes = $sr->findNonProgrammes($session->getId());
 
         return $this->render('session/show.html.twig', [
             'session' => $session,
-            'nonInscrits' => $nonInscrits
+            'nonInscrits' => $nonInscrits,
+            'nonProgrammes' => $nonProgrammes,
         ]);
     }
 }

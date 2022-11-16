@@ -105,6 +105,26 @@
 
         <div>
             <h3>Modules non programmés</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Module</th>
+                        <th>Categorie</th>
+                        <th>Durée</th>
+                        <th>Programmer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for module in nonProgrammes %}
+                    <tr>
+                        <td>{{ module }}</td>
+                        <td>{{ module.categorie }}</td>
+                        <td></td>
+                        <td>programmer</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 
