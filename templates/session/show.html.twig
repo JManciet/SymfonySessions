@@ -42,7 +42,7 @@
                         {% for stagiaire in session.stagiaires %}
                         <tr>
                             <td>{{ stagiaire }}</td>
-                            <td>désinscrire</td>
+                            <td><a href="{{ path('unsubscribe_session', {'idSe': session.id,'idSt': stagiaire.id }) }}">désinscrire</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -62,7 +62,7 @@
                     {% for stagiaire in nonInscrits %}
                     <tr>
                         <td>{{ stagiaire }}</td>
-                        <td>inscrire</td>
+                        <td><a href="{{ path('subscribe_session', {'idSe': session.id,'idSt': stagiaire.id }) }}">inscrire</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
