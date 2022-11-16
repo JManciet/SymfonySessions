@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'une session{% endblock %}
+
+{% block body %}
+
+<h1>Fiche session</h1>
+
+<h2>{{ session }}</h2>
+
+<div>
+    Formateur référent: à définir <br><br>
+    Date de début: {{ session.dateDebut | date('d-m-Y') }} <br>
+    Date de fin: {{ session.dateFin | date('d-m-Y') }} <br>
+    Nombre de places: {{ session.nbPlace }} <br>
+    Nombre de places disponibles: à définir <br>
+    Nombre de modules: {{ session.programmes | length }} (
+        {% for programme in session.programmes %}
+            {{ programme.module }}
+        {% endfor %} )
+</div>
+
+
+<div>
+
+    <div>
+        <div>
+            <h2>Stagiaires inscrits</h2>
+            {% if session.stagiaires | length == 0 %}
+
+                <p>Pas de stagiaires d'inscrits</p>
+
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Stagiaire</th>
+                            <th>Désinscrire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stagiaire in session.stagiaires %}
+                        <tr>
+                            <td>{{ stagiaire }}</td>
+                            <td>désinscrire</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        <div>
+            <h2>Stagiaires non inscrits</h2>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <h2>Programme</h2>
+            {% if session.programmes | length == 0 %}
+
+                <p>Pas de programmes</p>
+
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>Categorie</th>
+                            <th>Durée</th>
+                            <th>Déprogrammer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for programme in session.programmes %}
+                        <tr>
+                            <td>{{ programme.module }}</td>
+                            <td>{{programme.module.categorie}}</td>
+                            <td>{{programme.nbJour}}</td>
+                            <td>Déprogrammer</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+        </div>
+
+
+        <div>
+            <h3>Modules non programmés</h3>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

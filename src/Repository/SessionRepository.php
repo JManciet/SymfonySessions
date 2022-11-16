@@ -38,6 +38,7 @@ class SessionRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
 
 //    /**
 //     * @return Session[] Returns an array of Session objects
