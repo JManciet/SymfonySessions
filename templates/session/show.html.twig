@@ -51,6 +51,22 @@
         </div>
         <div>
             <h2>Stagiaires non inscrits</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stagiaire</th>
+                        <th>Inscrire</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stagiaire in nonInscrits %}
+                    <tr>
+                        <td>{{ stagiaire }}</td>
+                        <td>inscrire</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 
