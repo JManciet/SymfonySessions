@@ -49,6 +49,11 @@ class Session
      */
     private $programmes;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Formateur::class, inversedBy="sessions")
+     */
+    private $formateur;
+
     public function __construct()
     {
         $this->stagiaires = new ArrayCollection();
@@ -167,5 +172,17 @@ class Session
 
     public function __toString(): string{
         return (string) $this->getNom();
+    }
+
+    public function getFormateur(): ?Formateur
+    {
+        return $this->formateur;
+    }
+
+    public function setFormateur(?Formateur $formateur): self
+    {
+        $this->formateur = $formateur;
+
+        return $this;
     }
 }
