@@ -9,7 +9,7 @@
 <h2>{{ session }}</h2>
 
 <div>
-    Formateur référent: à définir <br><br>
+    Formateur référent: <a href="{{ path('show_formateur', {'id': session.formateur.id }) }}">{{ session.formateur }}</a>  <br><br>
     Date de début: {{ session.dateDebut | date('d-m-Y') }} <br>
     Date de fin: {{ session.dateFin | date('d-m-Y') }} <br>
     Nombre de places: {{ session.nbPlace }} <br>

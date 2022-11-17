@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FormateurController!{% endblock %}
+
+{% block body %}
+    <h1>Liste des formateurs</h1>
+
+    <a class="btn btn-primary" href="{{ path('add_formateur') }}">Ajouter un formateur</a> <br>
+
+
+    {% for formateur in formateurs %}
+        <a href="{{ path('show_formateur', {'id': formateur.id }) }}">{{formateur}}</a> 
+        <a class="btn btn-warning" href="{{ path('edit_formateur', {'id': formateur.id }) }}">Edit</a>
+        <a class="btn btn-danger" href="{{ path('delete_formateur', {'id': formateur.id }) }}">Delete</a>
+        <br>
+    {% endfor %}
+{% endblock %}

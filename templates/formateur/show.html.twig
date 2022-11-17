@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail d'un formateur{% endblock %}
+
+{% block body %}
+
+<h1>Fiche formateur</h1>
+
+<h2>{{ formateur }}</h2>
+
+<h2>Sessions prévues</h2>
+{% if formateur.sessions | length == 0 %}
+
+    <p>Pas de sessions de prévues</p>
+
+{% else %}
+
+    {% for session in formateur.sessions %}
+        {{session}} <br>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock %}
