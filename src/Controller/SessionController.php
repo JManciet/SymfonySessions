@@ -85,13 +85,30 @@ class SessionController extends AbstractController
     public function programModule(ManagerRegistry $doctrine, Session $session, Module $module)
     {
 
+        $nbJours = $_POST['nbJours'];
+
         $programme = new Programme();
 
         $em = $doctrine->getManager();
-        $programme->setNbJour($_POST['jours'])->setModule($module);
+        $programme->setNbJour($nbJours)->setModule($module);
         $em->persist($programme);
         $session->addProgramme($programme);
         $em->persist($session);
+        $em->flush();
+
+        return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
+    }
+
+    /**
+     * @Route("/session/deprogram/{idPr}/{idSe}", name="deprogram_module")
+     * @ParamConverter("session", options={"mapping": {"idSe": "id"}})
+     * @ParamConverter("programme", options={"mapping": {"idPr": "id"}})
+     */
+    public function deprogramModule(ManagerRegistry $doctrine, Programme $programme, Session $session)
+    {
+
+        $em = $doctrine->getManager();
+        $em->remove($programme);
         $em->flush();
 
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);

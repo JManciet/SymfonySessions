@@ -93,7 +93,7 @@
                             <td>{{ programme.module }}</td>
                             <td>{{ programme.module.categorie }}</td>
                             <td>{{ programme.nbJour }}</td>
-                            <td>Déprogrammer</td>
+                            <td><a href="{{ path('deprogram_module', {'idSe': session.id,'idPr': programme.id }) }}">déprogrammer</a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -120,7 +120,7 @@
                         <td>{{ module }}</td>
                         <td>{{ module.categorie }}</td>
                         <form method="POST" action="{{ path('program_module', {'idSe': session.id,'idMo': module.id }) }}">
-                            <td><input type="number" id="jours" name="jours" /></td>
+                            <td><input type="number" id="nbJours" name="nbJours" /></td>
                             <td><input type="submit" name="submit" value="Programmer" /></td>
                         </form>
 
