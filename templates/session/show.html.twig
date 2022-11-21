@@ -9,7 +9,12 @@
 <h2>{{ session }}</h2>
 
 <div>
-    Formateur référent: <a href="{{ path('show_formateur', {'id': session.formateur.id }) }}">{{ session.formateur }}</a>  <br><br>
+    Formateur référent: 
+            {% if session.formateur == null %}
+                <p>Pas de formateur d'inscrits</p>
+            {% else %}
+                <a href="{{ path('show_formateur', {'id': session.formateur.id }) }}">{{ session.formateur }}</a>
+            {% endif %}  <br><br>
     Date de début: {{ session.dateDebut | date('d-m-Y') }} <br>
     Date de fin: {{ session.dateFin | date('d-m-Y') }} <br>
     Nombre de places: {{ session.nbPlace }} <br>
@@ -42,7 +47,7 @@
                         {% for stagiaire in session.stagiaires %}
                         <tr>
                             <td>{{ stagiaire }}</td>
-                            <td><a href="{{ path('unsubscribe_session', {'idSe': session.id,'idSt': stagiaire.id }) }}">désinscrire</a></td>
+                            <td><a href="{{ path('unsubscribe_session', {'idSe': session.id,'idSt': stagiaire.id }) }}"><i class="fa-solid fa-user-minus"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -62,7 +67,7 @@
                     {% for stagiaire in nonInscrits %}
                     <tr>
                         <td>{{ stagiaire }}</td>
-                        <td><a href="{{ path('subscribe_session', {'idSe': session.id,'idSt': stagiaire.id }) }}">inscrire</a></td>
+                        <td><a href="{{ path('subscribe_session', {'idSe': session.id,'idSt': stagiaire.id }) }}"><i class="fa-solid fa-user-plus"></i></a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -93,7 +98,7 @@
                             <td>{{ programme.module }}</td>
                             <td>{{ programme.module.categorie }}</td>
                             <td>{{ programme.nbJour }}</td>
-                            <td><a href="{{ path('deprogram_module', {'idSe': session.id,'idPr': programme.id }) }}">déprogrammer</a></td>
+                            <td><a href="{{ path('deprogram_module', {'idSe': session.id,'idPr': programme.id }) }}"><i class="fa-solid fa-file-circle-minus"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -121,7 +126,7 @@
                         <td>{{ module.categorie }}</td>
                         <form method="POST" action="{{ path('program_module', {'idSe': session.id,'idMo': module.id }) }}">
                             <td><input type="number" id="nbJours" name="nbJours" /></td>
-                            <td><input type="submit" name="submit" value="Programmer" /></td>
+                            <td><button type="submit" name="submit" class="unstyled-button"><i class="fa-solid fa-file-circle-plus"></i></button></td>
                         </form>
 
                     </tr>
