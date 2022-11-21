@@ -1,9 +1,26 @@
+body{
+    background-color: #576879;
+}
+
 h1{
-    color : red;
+    color : rgb(64, 12, 12);
 }
 
 .unstyled-button {
     border: none;
     padding: 0;
     background: none;
-  }
+}
+
+input[type='number']{
+    width: 40px;
+} 
+
+#b {
+    background-color: rgb(41, 41, 85);
+}
+
+#a {
+    display: flex;
+    gap: 50px;
+}

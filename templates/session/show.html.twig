@@ -8,7 +8,7 @@
 
 <h2>{{ session }}</h2>
 
-<div>
+<div id="b">
     Formateur référent: 
             {% if session.formateur == null %}
                 <p>Pas de formateur d'inscrits</p>
@@ -26,9 +26,9 @@
 </div>
 
 
-<div>
+<div id="a">
 
-    <div>
+    <div id="a.a">
         <div>
             <h2>Stagiaires inscrits</h2>
             {% if session.stagiaires | length == 0 %}
@@ -36,7 +36,7 @@
                 <p>Pas de stagiaires d'inscrits</p>
 
             {% else %}
-                <table>
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>Stagiaire</th>
@@ -56,7 +56,7 @@
         </div>
         <div>
             <h2>Stagiaires non inscrits</h2>
-            <table>
+            <table class="table table-dark table-striped">
                 <thead>
                     <tr>
                         <th>Stagiaire</th>
@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <div>
+    <div id="a.b">
         <div>
             <h2>Programme</h2>
             {% if session.programmes | length == 0 %}
@@ -83,7 +83,7 @@
                 <p>Pas de programmes</p>
 
             {% else %}
-                <table>
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>Module</th>
@@ -110,7 +110,7 @@
 
         <div>
             <h3>Modules non programmés</h3>
-            <table>
+            <table class="table table-dark table-striped">
                 <thead>
                     <tr>
                         <th>Module</th>
@@ -125,10 +125,9 @@
                         <td>{{ module }}</td>
                         <td>{{ module.categorie }}</td>
                         <form method="POST" action="{{ path('program_module', {'idSe': session.id,'idMo': module.id }) }}">
-                            <td><input type="number" id="nbJours" name="nbJours" /></td>
+                            <td><input type="number" id="nbJours" name="nbJours" size="2"/> jours</td>
                             <td><button type="submit" name="submit" class="unstyled-button"><i class="fa-solid fa-file-circle-plus"></i></button></td>
                         </form>
-
                     </tr>
                     {% endfor %}
                 </tbody>
