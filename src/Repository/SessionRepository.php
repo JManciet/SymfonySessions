@@ -87,6 +87,61 @@ class SessionRepository extends ServiceEntityRepository
         return $query->getResult();
 
     }
+
+
+    public function findInProgressSessions()
+    {
+
+        $em = $this->getEntityManager();
+        $sub = $em->createQueryBuilder();
+
+        $qb = $sub;
+        $qb->select('s')
+            ->from('App\Entity\Session', 's')
+            ->where('s.dateDebut < CURRENT_DATE()')
+            ->andWhere('s.dateFin > CURRENT_DATE()');
+
+
+        $query = $sub->getQuery();
+        return $query->getResult();
+
+    }
+
+    public function findComeSessions()
+    {
+
+        $em = $this->getEntityManager();
+        $sub = $em->createQueryBuilder();
+
+        $qb = $sub;
+        $qb->select('s')
+            ->from('App\Entity\Session', 's')
+            ->where('s.dateDebut > CURRENT_DATE()');
+
+
+        $query = $sub->getQuery();
+        return $query->getResult();
+
+    }
+
+    public function findPastSessions()
+    {
+
+        $em = $this->getEntityManager();
+        $sub = $em->createQueryBuilder();
+
+        $qb = $sub;
+        $qb->select('s')
+            ->from('App\Entity\Session', 's')
+            ->where('s.dateFin < CURRENT_DATE()');
+
+
+        $query = $sub->getQuery();
+        return $query->getResult();
+
+    }
+
+
     
 
 //    /**

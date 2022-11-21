@@ -20,12 +20,20 @@ class SessionController extends AbstractController
     /**
      * @Route("/session", name="app_session")
      */
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(ManagerRegistry $doctrine, SessionRepository $sr): Response
     {
         $sessions = $doctrine->getRepository(Session::class)->findBy([], ["nom" => "DESC"]);
 
+        $inProgressSessions = $sr->findInProgressSessions();
+        $comeSessions = $sr->findComeSessions();
+        $pastSessions = $sr->findPastSessions();
+
+
         return $this->render('session/index.html.twig', [
             'sessions' => $sessions,
+            'inProgressSessions' => $inProgressSessions,
+            'comeSessions' => $comeSessions,
+            'pastSessions' => $pastSessions,
         ]);
     }
 

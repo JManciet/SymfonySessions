@@ -8,7 +8,27 @@
     <a class="btn btn-primary" href="{{ path('add_session') }}">Ajouter un session</a> <br>
 
 
-    {% for session in sessions %}
+    <h2>Sessions en cours</h2>
+
+    {% for session in inProgressSessions %}
+        <a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a> 
+        <a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}">Edit</a>
+        <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}">Delete</a>
+        <br>
+    {% endfor %}
+
+    <h2>Sessions à venir</h2>
+
+    {% for session in comeSessions %}
+        <a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a> 
+        <a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}">Edit</a>
+        <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}">Delete</a>
+        <br>
+    {% endfor %}
+
+    <h2>Sessions passées</h2>
+
+    {% for session in pastSessions %}
         <a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a> 
         <a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}">Edit</a>
         <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}">Delete</a>
