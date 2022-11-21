@@ -185,4 +185,10 @@ class Session
 
         return $this;
     }
+
+    public function getPlaceReservee()
+    {
+        return count($this->getStagiaires());
+    }
+    
 }

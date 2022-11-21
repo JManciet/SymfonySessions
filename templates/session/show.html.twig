@@ -18,7 +18,7 @@
     Date de début: {{ session.dateDebut | date('d-m-Y') }} <br>
     Date de fin: {{ session.dateFin | date('d-m-Y') }} <br>
     Nombre de places: {{ session.nbPlace }} <br>
-    Nombre de places disponibles: à définir <br>
+    Nombre de places disponibles:  {{ session.nbPlace - session.getPlaceReservee }}<br>
     Nombre de modules: {{ session.programmes | length }} (
         {% for programme in session.programmes %}
             {{ programme.module }}
