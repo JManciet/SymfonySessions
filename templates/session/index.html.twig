@@ -10,28 +10,85 @@
 
     <h2>Sessions en cours</h2>
 
+    <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Statut</th>
+                    <th>Session</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Inscrits</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
     {% for session in inProgressSessions %}
-        <a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a> 
-        <a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}">Edit</a>
-        <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}">Delete</a>
-        <br>
+                <tr>
+                    <td></td>
+                    <td><a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a></td>
+                    <td>{{ session.dateDebut | date("d/m/y") }}</td>
+                    <td>{{ session.dateFin | date("d/m/y") }}</td>
+                    <td>{{ session.getPlaceReservee ~ '/' ~ session.nbPlace }}</td>
+                    <td><a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}"><i class="fa-solid fa-trash-can"></i></a></td>
+                </tr>
     {% endfor %}
+            </tbody>
+    </table>
 
     <h2>Sessions à venir</h2>
 
+    <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Statut</th>
+                    <th>Session</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Inscrits</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
     {% for session in comeSessions %}
-        <a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a> 
-        <a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}">Edit</a>
-        <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}">Delete</a>
-        <br>
+                <tr>
+                    <td></td>
+                    <td><a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a></td>
+                    <td>{{ session.dateDebut | date("d/m/y") }}</td>
+                    <td>{{ session.dateFin | date("d/m/y") }}</td>
+                    <td>{{ session.getPlaceReservee ~ '/' ~ session.nbPlace }}</td>
+                    <td><a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}"><i class="fa-solid fa-trash-can"></i></a></td>
+                </tr>
     {% endfor %}
+            </tbody>
+    </table>
 
     <h2>Sessions passées</h2>
 
+    <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Statut</th>
+                    <th>Session</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Inscrits</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
     {% for session in pastSessions %}
-        <a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a> 
-        <a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}">Edit</a>
-        <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}">Delete</a>
-        <br>
+                <tr>
+                    <td></td>
+                    <td><a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a></td>
+                    <td>{{ session.dateDebut | date("d/m/y") }}</td>
+                    <td>{{ session.dateFin | date("d/m/y") }}</td>
+                    <td>{{ session.getPlaceReservee ~ '/' ~ session.nbPlace }}</td>
+                    <td><a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <a class="btn btn-danger" href="{{ path('delete_session', {'id': session.id }) }}"><i class="fa-solid fa-trash-can"></i></a></td>
+                </tr>
     {% endfor %}
+            </tbody>
+    </table>
 {% endblock %}
