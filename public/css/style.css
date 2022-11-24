@@ -12,7 +12,7 @@ body{
 }
 
 h1{
-    color : rgb(64, 12, 12);
+    color : rgb(83, 16, 16);
 }
 
 .unstyled-button {
@@ -39,7 +39,7 @@ input[type='number']{
 
 #control_panel {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     gap: 50px;
 }
