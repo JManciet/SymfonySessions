@@ -1,5 +1,14 @@
+*{
+    color: white;
+}
+
+
 body{
     background-color: #576879;
+}
+
+#container{
+   margin: 50px 100px;
 }
 
 h1{
@@ -16,11 +25,32 @@ input[type='number']{
     width: 40px;
 } 
 
-#b {
-    background-color: rgb(41, 41, 85);
+#sum_session {
+    background-color: #282828;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-#a {
+#control_panel {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 50px;
+}
+
+#control_panel > * {
+    width: 100%;
+  }
+
+.fa-user-minus, .fa-file-circle-minus {
+    color: brown;
+}
+
+.fa-user-plus, .fa-file-circle-plus {
+    color: darkgreen;
+}
+
+nav > ul > li > a {
+    color: white;
+    text-decoration: none;
 }

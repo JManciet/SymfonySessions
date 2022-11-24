@@ -5,13 +5,24 @@
 {% block body %}
     <h1>Liste des formateurs</h1>
 
-    <a class="btn btn-primary" href="{{ path('add_formateur') }}">Ajouter un formateur</a> <br>
+    <a class="btn btn-primary" href="{{ path('add_formateur') }}">Ajouter un formateur</a> <br><br>
 
-
-    {% for formateur in formateurs %}
-        <a href="{{ path('show_formateur', {'id': formateur.id }) }}">{{formateur}}</a> 
-        <a class="btn btn-warning" href="{{ path('edit_formateur', {'id': formateur.id }) }}">Edit</a>
-        <a class="btn btn-danger" href="{{ path('delete_formateur', {'id': formateur.id }) }}">Delete</a>
-        <br>
-    {% endfor %}
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Formateur</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for formateur in formateurs %}
+            <tr>
+                <td><a href="{{ path('show_formateur', {'id': formateur.id }) }}">{{formateur}}</a></td>
+                <td><a class="btn btn-warning" href="{{ path('edit_formateur', {'id': formateur.id }) }}">Edit</a>
+                    <a class="btn btn-danger" href="{{ path('delete_formateur', {'id': formateur.id }) }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
 {% endblock %}

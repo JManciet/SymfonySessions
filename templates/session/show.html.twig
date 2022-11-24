@@ -8,7 +8,7 @@
 
 <h2>{{ session }}</h2>
 
-<div id="b">
+<div id="sum_session">
     Formateur référent: 
             {% if session.formateur == null %}
                 <p>Pas de formateur d'inscrits</p>
@@ -26,9 +26,9 @@
 </div>
 
 
-<div id="a">
+<div id="control_panel">
 
-    <div id="a.a">
+    <div>
         <div>
             <h2>Stagiaires inscrits</h2>
             {% if session.stagiaires | length == 0 %}
@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <div id="a.b">
+    <div>
         <div>
             <h2>Programme</h2>
             {% if session.programmes | length == 0 %}

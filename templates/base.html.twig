@@ -12,14 +12,16 @@
         {% endblock %}
     </head>
     <body>
-    <nav>
-            <ul>
-                <li><a href="{{ path("app_stagiaire") }}">Stagiaires</a></li>
-                <li><a href="{{ path("app_formateur") }}">Formateurs</a></li>
-                <li><a href="{{ path("app_session") }}">Sessions</a></li>
-            </ul>
-        </nav>
-        {% block body %}{% endblock %}
+        <div id="container">
+            <nav>
+                <ul>
+                    <li><a href="{{ path("app_stagiaire") }}">Stagiaires</a></li>
+                    <li><a href="{{ path("app_formateur") }}">Formateurs</a></li>
+                    <li><a href="{{ path("app_session") }}">Sessions</a></li>
+                </ul>
+            </nav>
+            {% block body %}{% endblock %}
+        </div>
     </body>
     {% block javascripts %}
         <script src="{{ asset('js/script.js') }}"></script>
