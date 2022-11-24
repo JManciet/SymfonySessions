@@ -125,7 +125,11 @@
                         <td>{{ module }}</td>
                         <td>{{ module.categorie }}</td>
                         <form method="POST" action="{{ path('program_module', {'idSe': session.id,'idMo': module.id }) }}">
-                            <td><input type="number" id="nbJours" name="nbJours" size="2"/> jours</td>
+                            <td>{% for message in app.flashes('notice') %}
+                                <div class="flash-notice">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}<input type="number" min="1" id="nbJours" name="nbJours" size="2"/> jours</td>
                             <td><button type="submit" name="submit" class="unstyled-button"><i class="fa-solid fa-file-circle-plus"></i></button></td>
                         </form>
                     </tr>

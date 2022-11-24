@@ -139,16 +139,38 @@ class SessionController extends AbstractController
     public function programModule(ManagerRegistry $doctrine, Session $session, Module $module)
     {
 
-        $nbJours = $_POST['nbJours'];
+        if(isset($_POST['submit'])){
 
-        $programme = new Programme();
+            $nbJours = filter_input(INPUT_POST, "nbJours", FILTER_VALIDATE_INT);
 
-        $em = $doctrine->getManager();
-        $programme->setNbJour($nbJours)->setModule($module);
-        $em->persist($programme);
-        $session->addProgramme($programme);
-        $em->persist($session);
-        $em->flush();
+            if($nbJours){
+                if($nbJours>0){
+                    $programme = new Programme();
+
+                    $em = $doctrine->getManager();
+                    $programme->setNbJour($nbJours)->setModule($module);
+                    $em->persist($programme);
+                    $session->addProgramme($programme);
+                    $em->persist($session);
+                    $em->flush();
+                }else{
+                    $this->addFlash(
+                        'notice',
+                        'Le nombre de jours doit être positif !'
+                    );
+                }
+            }else{
+                $this->addFlash(
+                    'notice',
+                    'Le nombre de jours doit être un nombre entier positif !'
+                );
+            }
+        }else{
+            $this->addFlash(
+                'notice',
+                'Erreur sur le bouton de validation, merci de signaler le problème !'
+            );
+        }
 
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }

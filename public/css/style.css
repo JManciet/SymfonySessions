@@ -1,4 +1,4 @@
-*{
+*:not(option){
     color: white;
 }
 
@@ -22,7 +22,8 @@ h1{
 }
 
 input[type='number']{
-    width: 40px;
+    width: 80px;
+    color:black;
 } 
 
 #sum_session {
