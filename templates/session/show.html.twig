@@ -9,20 +9,25 @@
 <h2>{{ session }}</h2>
 
 <div id="sum_session">
-    Formateur référent: 
-            {% if session.formateur == null %}
-                <p>Pas de formateur d'inscrits</p>
-            {% else %}
-                <a href="{{ path('show_formateur', {'id': session.formateur.id }) }}">{{ session.formateur }}</a>
-            {% endif %}  <br><br>
-    Date de début: {{ session.dateDebut | date('d-m-Y') }} <br>
-    Date de fin: {{ session.dateFin | date('d-m-Y') }} <br>
-    Nombre de places: {{ session.nbPlace }} <br>
-    Nombre de places disponibles:  {{ session.nbPlace - session.getPlaceReservee }}<br>
-    Nombre de modules: {{ session.programmes | length }} (
-        {% for programme in session.programmes %}
-            {{ programme.module }}
-        {% endfor %} )
+    <div>
+        Formateur référent: 
+                {% if session.formateur == null %}
+                    <p>Pas de formateur d'inscrits</p>
+                {% else %}
+                    <a href="{{ path('show_formateur', {'id': session.formateur.id }) }}">{{ session.formateur }}</a>
+                {% endif %}  <br><br>
+        Date de début: {{ session.dateDebut | date('d-m-Y') }} <br>
+        Date de fin: {{ session.dateFin | date('d-m-Y') }} <br>
+        Nombre de places: {{ session.nbPlace }} <br>
+        Nombre de places disponibles:  {{ session.nbPlace - session.getPlaceReservee }}<br>
+        Nombre de modules: {{ session.programmes | length }} (
+            {% for programme in session.programmes %}
+                {{ programme.module }}
+            {% endfor %} )
+    </div>
+    <div>
+        <a class="btn btn-warning" href="{{ path('edit_session', {'id': session.id }) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+    </div>
 </div>
 
 

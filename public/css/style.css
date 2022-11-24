@@ -27,6 +27,11 @@ input[type='number']{
 } 
 
 #sum_session {
+
+    display: flex;
+    align-items: baseline;
+    justify-content:space-between;
+
     background-color: #282828;
     padding: 10px;
     border-radius: 5px;
@@ -55,3 +60,4 @@ nav > ul > li > a {
     color: white;
     text-decoration: none;
 }
+
