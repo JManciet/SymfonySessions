@@ -107,10 +107,17 @@ class SessionController extends AbstractController
     public function subscribesession(ManagerRegistry $doctrine, Session $session, Stagiaire $stagiaire)
     {
 
-        $em = $doctrine->getManager();
-        $session->addStagiaire($stagiaire);
-        $em->persist($session);
-        $em->flush();
+        if(!$session->complet()){
+            $em = $doctrine->getManager();
+            $session->addStagiaire($stagiaire);
+            $em->persist($session);
+            $em->flush();
+        }else{
+            $this->addFlash(
+                'notice',
+                'La session est déjà complète !'
+            );
+        }
 
         return $this->redirectToRoute('show_session', ['id' => $session->getId()]);
     }
