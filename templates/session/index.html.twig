@@ -24,7 +24,7 @@
             <tbody>
     {% for session in inProgressSessions %}
                 <tr>
-                    <td></td>
+                    <td>{% if session.complet %}<span class="badge text-bg-danger">Session complète</span>{% endif %}</td>
                     <td><a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a></td>
                     <td>{{ session.dateDebut | date("d/m/y") }}</td>
                     <td>{{ session.dateFin | date("d/m/y") }}</td>
@@ -52,7 +52,7 @@
             <tbody>
     {% for session in comeSessions %}
                 <tr>
-                    <td></td>
+                    <td>{% if session.complet %}<span class="badge text-bg-danger">Session complète</span>{% endif %}</td>
                     <td><a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a></td>
                     <td>{{ session.dateDebut | date("d/m/y") }}</td>
                     <td>{{ session.dateFin | date("d/m/y") }}</td>
@@ -80,7 +80,7 @@
             <tbody>
     {% for session in pastSessions %}
                 <tr>
-                    <td></td>
+                    <td>{% if session.complet %}<span class="badge text-bg-danger">Session complète</span>{% endif %}</td>
                     <td><a href="{{ path('show_session', {'id': session.id }) }}">{{session}}</a></td>
                     <td>{{ session.dateDebut | date("d/m/y") }}</td>
                     <td>{{ session.dateFin | date("d/m/y") }}</td>

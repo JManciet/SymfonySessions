@@ -123,7 +123,7 @@ class Session
 
     public function addStagiaire(Stagiaire $stagiaire): self
     {
-        if (!$this->stagiaires->contains($stagiaire)) {
+        if (!$this->stagiaires->contains($stagiaire)&&!$this->complet()) {
             $this->stagiaires[] = $stagiaire;
             $stagiaire->addSession($this);
         }
@@ -189,6 +189,14 @@ class Session
     public function getPlaceReservee()
     {
         return count($this->getStagiaires());
+    }
+
+    public function complet()
+    {
+        if($this->getPlaceReservee()==$this->nbPlace)
+            return true;
+        else
+            return false;
     }
     
 }
